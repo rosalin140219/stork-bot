@@ -10,12 +10,13 @@ async def main():
         for line in file:
             # 按分隔符 "----" 分割每行内容
             parts = line.strip().split('----')
-            if len(parts) == 3:
-                email = parts[0]
-                password = parts[1]
-                referral_code = parts[2]
+            if len(parts) == 4:
+                ip = parts[0]
+                email = parts[1]
+                password = parts[2]
+                referral_code = parts[3]
                 print(f"邮箱: {email}, 密码: {password}, 推荐码: {referral_code}")
-                stork = Stork(email, password, referral_code)
+                stork = Stork(ip, email, password, referral_code)
                 stork.register()
                 time.sleep(5)
                 # stork.send_verify_code()
